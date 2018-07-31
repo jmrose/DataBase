@@ -1,5 +1,7 @@
 ## Centos Install
 * [Mariadb Repository](https://mariadb.com/kb/en/mariadb/yum/)  
+  
+* __Install__  
 $ sudo yum install MariaDB-server MariaDB-client  
 $ service mysql start  
 
