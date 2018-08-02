@@ -5,7 +5,14 @@ $ service mysql start
 [Mariadb Repository](https://mariadb.com/kb/en/mariadb/yum/)  
 
 
-## Mysql 자주 사용하는 명령어  
+## Mysql 자주 사용하는 명령어
+
+* show variables
+* mysqld_safe
+* mysqladmin
+* [mysqlcheck](#Mysqlcheck)
+* mysqldump
+* [drop table]
   
 ### SHOW VARIABLES; 
 > 시스템 변수 값 보기 [>설명보기](https://dev.mysql.com/doc/refman/8.0/en/show-variables.html)    
@@ -92,4 +99,17 @@ mysql> repair table [[tablename]]   // 복구
 mysql> optimize table [[tablename]]  //최적화    
 mysql> analyze table [[tablename]]  
   
-###   
+###  Mysqldump
+> __procedure, function, trigger 까지 모두 백업하기(옵션 --routines  --trigger)__  
+$ mysqldump --routines --trigger -uroot -p [[database]] [[tablename]] > dumpfile.sql  
+__procedure function trigger만 백업하기__  
+$ mysqldump -uroot -p --routines --no-create-info --no-data --no-create-db --skip-opt [[database]] > filename.sql  
+__복원__  
+$ mysql --routines --trigger -uroot -p  [[database]] < filename.sql  
+  
+  
+### Drop table
+> $ drop table [[tablename]]  
+$ delete from [[tablename]]  
+$ truncate table [[tablename]]
+
