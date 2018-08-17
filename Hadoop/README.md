@@ -1,13 +1,15 @@
 ## Ubuntu install 
 
-#### Java install
 
 $ sudo apt-get update  
 $ sudo apt-get upgrade   
   
-> 리포지토리 등록 시 메세지, 다음을 설치한다. [sudo: add-apt-repository: command not found]     
+> Java Install  
+리포지토리 등록 시 메세지, 다음을 설치한다. [sudo: add-apt-repository: command not found]     
 $ sudo apt-get install python-software-properties  
 $ sudo apt-get install software-properties-common    
+
+> 리포지토리 등록  
 $ sudo add-apt-repository ppa:webupd8team/java  
 $ apt-get install oracle-java8-installer    
 $ java -version    
@@ -21,7 +23,25 @@ $ sudo vim /etc/sudoers  ( root 설정 밑에 hduser 설정 추가 )
 root ALL(ALL:ALL) ALL   
 hduser ALL(ALL:ALL) ALL    
   
+<pre>
+<code>
+$ vim ~/.bashrc  // 다음을 등록해 줌.
 
+# HADOOP 
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+export PATH=$PATH:$JAVA_HOME/bin
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HODOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
+export PATH=$PATH:/usr/local/hadoop/bin/
+</code>
+</pre>
 
 <pre>
 <code>
